@@ -1,5 +1,5 @@
 
-import pickle
+import joblib
 from pathlib import Path
 
 import pandas as pd
@@ -24,8 +24,7 @@ if not MODEL_FILE.exists():
     st.error("Model not found. Run: python train_model.py")
     st.stop()
 
-with open(MODEL_FILE, "rb") as f:
-    saved = pickle.load(f)
+saved = joblib.load(MODEL_FILE)
 
 model = saved["model"]
 features = saved["features"]
